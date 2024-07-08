@@ -1,6 +1,7 @@
 package ru.kata.spring.boot_security.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.kata.spring.boot_security.demo.entities.User;
 import ru.kata.spring.boot_security.demo.services.UserService;
 
-@org.springframework.stereotype.Controller
+@Controller
 class AdminController {
 
     private final UserService userService;
@@ -36,21 +37,18 @@ class AdminController {
         return "get";
     }
 
-
+    
     @GetMapping(value = "/create")
-    public String addUserForm(Model model) { //@ModelAttribute("user") User user) {
+    public String addUserForm(Model model) {
         model.addAttribute("user", new User());
         return "create";
     }
-
 
     @PostMapping("/createPost")
     public String createUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "userSaved";
     }
-
-
 
     @GetMapping("/delete")
     public String delete(@RequestParam(value = "id") Long id) {
@@ -72,8 +70,6 @@ class AdminController {
     public String showChangeCompletedPage() {
         return "changeCompleted";
     }
-
-
 
 }
 

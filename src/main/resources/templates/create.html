@@ -5,9 +5,9 @@
     <title>Создать</title>
 </head>
 <body>
-<form th:object="${user}" th:method="POST" action="/createPost">
+<form th:object="${user}" th:method="Post" th:action="@{/createPost}" >
     <label for="name">Имя:</label>
-    <input type="text" id="name" th:field="*{username}" required/><br>
+    <input type="text" id="name" th:field="*{lastName}" required/><br>
     <label for="surname">Пароль:</label>
     <input type="text" id="surname" th:field="*{password}" required/><br>
     <label for="email">Электронная почта:</label>
